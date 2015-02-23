@@ -10,17 +10,17 @@ import java.util.Date
 class Mascota(protected var estado: EstadoMascota) {
 	def comer = estado = estado match {
 		case Hambrienta => Contenta()
-		case Contenta(n) => Contenta(n+1)
+		case Contenta(n) => Contenta(n + 1)
 		case a: Aburrida if a.minutos > 80 => Contenta()
 		case otro => otro
 	}
-	
+
 	def jugar = estado = estado match {
-		case Contenta(n) => Contenta(n+2)
+		case Contenta(n) => Contenta(n + 2)
 		case _: Aburrida => Contenta()
-		case otro => otro 
+		case otro => otro
 	}
-	
+
 	def puedeJugar = estado.puedeJugar
 
 	def estadoActual = estado
@@ -30,7 +30,7 @@ class Mascota(protected var estado: EstadoMascota) {
 // ESTADOS
 //*********************************************************************************************
 
-sealed trait EstadoMascota{
+sealed trait EstadoMascota {
 	def puedeJugar = true
 }
 
